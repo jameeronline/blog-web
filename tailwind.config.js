@@ -1,8 +1,11 @@
 import colors from "tailwindcss/colors";
+import defaultTheme from "tailwindcss/defaultTheme";
+
 /** @type {import('tailwindcss').Config} */
 
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: ["class", '[data-theme="dark"]'],
   theme: {
     extend: {
       typography: {
@@ -16,15 +19,22 @@ export default {
         primary: colors.purple,
         secondary: colors.emerald,
         tertiary: colors.teal,
-        typography: {
-          DEFAULT: "#1A1A1A",
-          primary: "#1A1A1A",
-          secondary: "#667085",
-          tertiary: "#828282",
-          quaternary: "#BDBDBD",
+        background: {
+          body: "var(--bg-color-body)",
         },
+        typography: {
+          DEFAULT: "var(--text-color-default)",
+          primary: "var(--text-color-primary)",
+          secondary: "var(--text-color-secondary)",
+          tertiary: "var(--text-color-tertiary)",
+          quaternary: "var(--text-color-quaternary)",
+        },
+      },
+
+      fontFamily: {
+        sans: ['"Inter"', ...defaultTheme.fontFamily.sans],
       },
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [require("@tailwindcss/typography"), require("@tailwindcss/forms")],
 };

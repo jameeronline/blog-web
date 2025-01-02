@@ -2,6 +2,8 @@ import { Link, Navigate, NavLink } from "react-router";
 import { useEffect, useState } from "react";
 
 import { useNavigate } from "react-router";
+import { MyToggle } from "../components/ui/toggle";
+import { useDarkMode } from "../context/darkmode-context";
 
 const menuItems = [
   {
@@ -25,6 +27,17 @@ const menuItems = [
 const Header = () => {
   const navigate = useNavigate();
   const [isToggleOpen, setIsToggleOpen] = useState(false);
+  const { isDarkMode } = useDarkMode();
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark");
+      document.documentElement.dataset.theme = "dark";
+    } else {
+      document.documentElement.classList.remove("dark");
+      document.documentElement.dataset.theme = "light";
+    }
+  }, [isDarkMode]);
 
   return (
     <>
@@ -66,6 +79,9 @@ const Header = () => {
                     </NavLink>
                   </li>
                 ))}
+                <li>
+                  <MyToggle />
+                </li>
               </ul>
             </nav>
 

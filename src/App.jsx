@@ -3,6 +3,8 @@ import "./css/styles.css";
 //routes import
 import { createBrowserRouter, RouterProvider } from "react-router";
 
+//context import
+
 //components import
 import Home from "./routes/home";
 import Blog from "./routes/blog";
@@ -18,6 +20,7 @@ import Post from "./routes/post";
 //react query imports
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import RootLayout from "./layout/layout";
+import { DarkModeProvider } from "./context/darkmode-context";
 
 const queryClient = new QueryClient();
 
@@ -89,9 +92,11 @@ const routes = createBrowserRouter([
 function App() {
   return (
     <>
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={routes}></RouterProvider>
-      </QueryClientProvider>
+      <DarkModeProvider>
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={routes}></RouterProvider>
+        </QueryClientProvider>
+      </DarkModeProvider>
     </>
   );
 }
