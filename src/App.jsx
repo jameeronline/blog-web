@@ -67,7 +67,7 @@ const routes = createBrowserRouter([
         ],
       },
       {
-        path: "post/:title",
+        path: "post/:slug",
         element: <Post />,
       },
       {

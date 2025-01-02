@@ -6,7 +6,7 @@ import {
   slugify,
 } from "../utilities/functions";
 
-const RecentPost = ({ post }) => {
+const ArticleSummary = ({ post }) => {
   const {
     author,
     title,
@@ -72,7 +72,7 @@ const RecentPost = ({ post }) => {
   );
 };
 
-RecentPost.propTypes = {
+ArticleSummary.propTypes = {
   post: PropTypes.shape({
     title: PropTypes.string.isRequired,
     slug: PropTypes.string.isRequired,
@@ -103,4 +103,4 @@ RecentPost.propTypes = {
   }).isRequired,
 };
 
-export default RecentPost;
+export default ArticleSummary;

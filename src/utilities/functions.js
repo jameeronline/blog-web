@@ -8,7 +8,7 @@ export function reverseString(str) {
   return str.split("").reverse().join("");
 }
 
-export function sluggify(str) {
+export function slugify(str) {
   return str
     .toLowerCase()
     .trim()

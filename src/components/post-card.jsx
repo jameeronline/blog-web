@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import PropTypes from "prop-types";
-import { sluggify } from "../utilities/functions";
+import { slugify } from "../utilities/functions";
 
 const PostCard = ({ post }) => {
   const { image, title, description, category, tags, createdDate, author } =
@@ -18,14 +18,14 @@ const PostCard = ({ post }) => {
       <div className="flex flex-col gap-3 mb-6">
         <p className="text-primary-600 text-sm">{createdDate}</p>
         <h1 className="font-bold text-2xl text-typography">
-          <Link to={`/post/${sluggify(title)}`}>{title}</Link>
+          <Link to={`/post/${slugify(title)}`}>{title}</Link>
         </h1>
         <p className="text-typography-secondary">{description}</p>
       </div>
 
       <div className="flex gap-2 mb-4">
         <Link
-          to={`/blog/category/${sluggify(category)}`}
+          to={`/blog/category/${slugify(category)}`}
           className="inline-flex items-center px-2 py-1 text-sm font-medium text-secondary-800 bg-secondary-50 rounded-full"
         >
           {category}
@@ -36,7 +36,7 @@ const PostCard = ({ post }) => {
         {tags.map((tag) => (
           <Link
             key={tag}
-            to={`/blog/tag/${sluggify(tag)}`}
+            to={`/blog/tag/${slugify(tag)}`}
             className="inline-flex items-center px-2 py-1 text-sm font-medium text-primary-800 bg-primary-50 rounded-full"
           >
             {tag}

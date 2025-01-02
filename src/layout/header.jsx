@@ -29,12 +29,12 @@ const Header = () => {
   return (
     <>
       <header className="">
-        <div className="w-full xl:container mx-auto px-6">
+        <div className="w-full xl:container mx-auto px-4">
           <div className="flex justify-between items-center py-4 relative">
             {/* Logo */}
             <Link
               to="/"
-              className="font-bold text-2xl xl:text-4xl inline-flex flex-nowrap items-center gap-2"
+              className="font-bold text-2xl inline-flex flex-nowrap items-center gap-2"
             >
               <span className="whitespace-nowrap">The Blog.</span>
             </Link>
@@ -55,12 +55,10 @@ const Header = () => {
                       to={item.slug}
                       onClick={() => setIsToggleOpen(false)}
                       className={({ isActive, isPending }) =>
-                        `flex p-2 hover:rounded-sm hover:text-gray-500 hover:bg-secondary-100/50 lg:hover:bg-transparent transition-colors duration-200 ${
+                        `flex p-2 hover:rounded-sm hover:text-gray-500 hover:bg-primary-100/50 lg:hover:bg-transparent transition-colors duration-200 ${
                           isPending ? "pending" : ""
                         } ${
-                          isActive
-                            ? "text-secondary-600 pointer-events-none"
-                            : ""
+                          isActive ? "text-primary-600 pointer-events-none" : ""
                         }`
                       }
                     >

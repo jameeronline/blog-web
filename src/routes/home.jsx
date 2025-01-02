@@ -15,13 +15,7 @@ import { useLocation } from "react-router";
 //API call to get the posts
 import { useRecentPosts } from "../graph-queries/recent-posts";
 import * as contentful from "contentful";
-import { use } from "react";
 import RecentPost from "../components/recent-post";
-
-const client = contentful.createClient({
-  space: "0d44yafkqnik",
-  accessToken: "KCuQLpElfJQF5k01piQ3h50adMh-LJo7ZW9RhUFSWS8",
-});
 
 const posts = [
   {
@@ -141,8 +135,6 @@ const Home = () => {
     return <div>Error fetching data {JSON.stringify(error)}</div>;
   }
 
-  console.log(data);
-
   return (
     <section className="">
       <header>
@@ -155,13 +147,6 @@ const Home = () => {
           </div>
         ))}
       </div>
-      {/* <div className="grid grid-cols-4 gap-6 gap-y-10 md:grid-cols-8 lg:grid-cols-12">
-        {posts.map((post) => (
-          <div key={post.id} className="col-span-4">
-            <PostCard post={post} />
-          </div>
-        ))}
-      </div> */}
     </section>
   );
 };
