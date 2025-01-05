@@ -120,7 +120,7 @@ const Post = () => {
       <section className="col-span-4 md:col-span-8">
         <header className="mb-8"></header>
 
-        <div className="prose prose-lg mb-10">
+        <div className="prose prose-lg dark:prose-invert mb-10">
           <h1>{title}</h1>
           <div className="inline-flex items-center gap-4">
             {author && author?.avatar?.url && (
