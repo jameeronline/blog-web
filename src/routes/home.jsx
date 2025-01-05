@@ -168,11 +168,11 @@ const Home = () => {
           <h1 className="text-2xl font-bold mt-12 mb-6">Featured Posts</h1>
         </header>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-8 lg:grid-cols-12">
-          <div className="col-span-6">
+          <div className="col-span-4 md:col-span-8 lg:col-span-6">
             <FeaturedPostCard post={featuredPosts[0]} />
           </div>
 
-          <div className="col-span-6">
+          <div className="col-span-4 md:col-span-8 lg:col-span-6">
             <FeaturedPostCard post={featuredPosts[1]} size="small" />
             <FeaturedPostCard post={featuredPosts[2]} size="small" />
             <FeaturedPostCard post={featuredPosts[0]} size="small" />
