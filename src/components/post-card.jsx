@@ -1,5 +1,7 @@
 import { Link } from "react-router";
 import PropTypes from "prop-types";
+
+//utilities
 import { slugify } from "../utilities/functions";
 
 const PostCard = ({ post }) => {
@@ -47,15 +49,15 @@ const PostCard = ({ post }) => {
   );
 };
 
-PostCard.propTypes = {
-  post: PropTypes.shape({
-    image: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    category: PropTypes.string.isRequired,
-    tags: PropTypes.arrayOf(PropTypes.string).isRequired,
-    createdDate: PropTypes.string.isRequired,
-  }).isRequired,
-};
+// PostCard.propTypes = {
+//   post: PropTypes.shape({
+//     image: PropTypes.string.isRequired,
+//     title: PropTypes.string.isRequired,
+//     description: PropTypes.string.isRequired,
+//     category: PropTypes.string.isRequired,
+//     tags: PropTypes.arrayOf(PropTypes.string).isRequired,
+//     createdDate: PropTypes.string.isRequired,
+//   }).isRequired,
+// };
 
 export default PostCard;

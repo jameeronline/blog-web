@@ -1,7 +1,7 @@
 import { Switch } from "@headlessui/react";
 import { useDarkMode } from "../../context/darkmode-context";
 
-export const MyToggle = () => {
+export const UIToggle = () => {
   const { isDarkMode, setIsDarkMode } = useDarkMode();
 
   return (
@@ -12,7 +12,7 @@ export const MyToggle = () => {
         isDarkMode ? "bg-primary-600" : "bg-gray-200"
       } relative inline-flex h-6 w-11 items-center rounded-full`}
     >
-      <span className="sr-only">Enable notifications</span>
+      <span className="sr-only">Enable Dark Mode</span>
       <span
         className={`${
           isDarkMode ? "translate-x-6" : "translate-x-1"

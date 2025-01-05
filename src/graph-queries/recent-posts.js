@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { QUERY_CONFIG, QUERY_URL } from "./config";
+import { POST_CARD_FIELDS, QUERY_CONFIG, QUERY_URL } from "./config";
 
 export const GET_RECENT_POSTS = `
     query {
@@ -14,32 +14,7 @@ export const GET_RECENT_POSTS = `
         limit: 9
       ) {
         items {
-          title
-          author {
-            name
-            slug
-          }
-          slug
-          summary
-          postThumbnail {
-            url
-          }
-          tagsCollection {
-            items {
-              title
-              slug
-            }
-          }
-          categoryCollection {
-            items {
-              title
-              slug
-            }
-          }
-          sys {
-            publishedAt
-            id
-          }
+          ${POST_CARD_FIELDS}
         }
       }
     }

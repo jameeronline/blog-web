@@ -9,3 +9,32 @@ export const QUERY_CONFIG = {
     Authorization: `Bearer ${import.meta.env.VITE_CONTENTFUL_ACCESS_TOKEN}`,
   },
 };
+
+export const POST_CARD_FIELDS = `
+title
+author {
+  name
+  slug
+}
+slug
+summary
+postThumbnail {
+  url
+}
+tagsCollection {
+  items {
+    title
+    slug
+  }
+}
+categoryCollection {
+  items {
+    title
+    slug
+  }
+}
+sys {
+  publishedAt
+  id
+}
+`;

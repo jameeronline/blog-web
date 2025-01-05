@@ -1,8 +1,13 @@
-import { Link, Navigate, NavLink } from "react-router";
 import { useEffect, useState } from "react";
 
+//react-router
 import { useNavigate } from "react-router";
-import { MyToggle } from "../components/ui/toggle";
+import { Link, Navigate, NavLink } from "react-router";
+
+//components
+import { UIToggle } from "../components/ui/ui-toggle";
+
+//context
 import { useDarkMode } from "../context/darkmode-context";
 
 const menuItems = [
@@ -26,8 +31,8 @@ const menuItems = [
 
 const Header = () => {
   const navigate = useNavigate();
-  const [isToggleOpen, setIsToggleOpen] = useState(false);
   const { isDarkMode } = useDarkMode();
+  const [isToggleOpen, setIsToggleOpen] = useState(false);
 
   useEffect(() => {
     if (isDarkMode) {
@@ -61,7 +66,7 @@ const Header = () => {
                      : "invisible opacity-0"
                  }}`}
             >
-              <ul className="flex gap-2 text-typography-primary flex-col lg:flex-row lg:gap-4">
+              <ul className="flex gap-2 items-center text-typography-primary flex-col lg:flex-row lg:gap-4">
                 {menuItems.map((item, index) => (
                   <li key={index}>
                     <NavLink
@@ -80,7 +85,7 @@ const Header = () => {
                   </li>
                 ))}
                 <li>
-                  <MyToggle />
+                  <UIToggle />
                 </li>
               </ul>
             </nav>

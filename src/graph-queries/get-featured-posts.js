@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { POST_CARD_FIELDS, QUERY_CONFIG, QUERY_URL } from "./config";
 
-export const GET_CATEGORY_POSTS = `
-  query ($category: String!) {
+export const GET_FEATURED_POSTS = `
+  query {
     blogCollection(
     where: {
       AND: [
-      { category: { slug: $category } },
+      { featuredPost: true },
       { contentfulMetadata: { tags: { id_contains_some: ["blog"] } } }
       ]
     },
@@ -19,12 +19,12 @@ export const GET_CATEGORY_POSTS = `
   }
 `;
 
-const fetchPosts = async (category) => {
+const fetchPosts = async (tag) => {
   const response = await fetch(QUERY_URL, {
     ...QUERY_CONFIG,
     body: JSON.stringify({
-      query: GET_CATEGORY_POSTS,
-      variables: { category: category },
+      query: GET_FEATURED_POSTS,
+      variables: { tag: tag },
     }),
   });
 
@@ -33,12 +33,13 @@ const fetchPosts = async (category) => {
   }
 
   const data = await response.json();
+  console.log(data);
   return data.data.blogCollection.items; // Adjust based on your GraphQL query structure
 };
 
-export const useCategory = (category) => {
+export const useFeaturedPosts = () => {
   return useQuery({
-    queryKey: ["category-posts", category],
-    queryFn: () => fetchPosts(category),
+    queryKey: ["featured-posts"],
+    queryFn: () => fetchPosts(),
   });
 };
