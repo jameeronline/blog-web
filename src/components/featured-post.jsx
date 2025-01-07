@@ -87,13 +87,17 @@ const FeaturedPostCard = ({ post, size = "DEFAULT" }) => {
 
         <div className="flex gap-2 mb-4">
           {categoryCollection.items.map(({ title, slug }) => (
-            <UITag key={slug} slug={slug} title={title} type="secondary" />
+            <Link key={slug} to={`/blog/category/${slug}`}>
+              <UITag type="secondary">{title}</UITag>
+            </Link>
           ))}
         </div>
 
         <div className={tagWrapper()}>
           {tagsCollection.items.map(({ title, slug }) => (
-            <UITag key={slug} slug={slug} title={title} />
+            <Link key={slug} to={`/blog/tag/${slug}`}>
+              <UITag>{title}</UITag>
+            </Link>
           ))}
         </div>
       </div>

@@ -15,7 +15,7 @@
   --text-color-tertiary: #828282;
   --text-color-quaternary: #bdbdbd;
 
-  --bg-color-body: "#FFFFFF";
+  --bg-color-body: #FFFFFF;
 }
 
 [data-theme="dark"] {
@@ -31,5 +31,5 @@
   --text-color-tertiary: #cbd5e0;
   --text-color-quaternary: #e2e8f0;
 
-  --bg-color-body: "#090D1F";
+  --bg-color-body: #090D1F;
 }

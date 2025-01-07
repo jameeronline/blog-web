@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { POST_CARD_FIELDS, QUERY_CONFIG, QUERY_URL } from "./config";
 
-export const GET_RECENT_POSTS = `
+export const GET_ALL_POSTS = `
     query {
       blogCollection(
         where: {
@@ -11,7 +11,6 @@ export const GET_RECENT_POSTS = `
             }
           }
         }
-        limit: 12
       ) {
         items {
           ${POST_CARD_FIELDS}
@@ -20,10 +19,10 @@ export const GET_RECENT_POSTS = `
     }
 `;
 
-const fetchRecentPosts = async () => {
+const fetchAllPosts = async () => {
   const response = await fetch(QUERY_URL, {
     ...QUERY_CONFIG,
-    body: JSON.stringify({ query: GET_RECENT_POSTS }),
+    body: JSON.stringify({ query: GET_ALL_POSTS }),
   });
 
   if (!response.ok) {
@@ -35,9 +34,9 @@ const fetchRecentPosts = async () => {
   return data.data.blogCollection.items; // Adjust based on your GraphQL query structure
 };
 
-export const useRecentPosts = () => {
+export const useFetchAllPosts = () => {
   return useQuery({
-    queryKey: ["recent-posts"],
-    queryFn: fetchRecentPosts,
+    queryKey: ["all-posts"],
+    queryFn: fetchAllPosts,
   });
 };

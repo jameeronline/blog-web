@@ -1,12 +1,7 @@
-import { Link } from "react-router";
 import PropTypes from "prop-types";
 
 import { tv } from "tailwind-variants";
-
-//utilizes
-import { capitalizeString } from "../../utilities/functions";
-
-function UITag({ slug, title, type = "primary" }) {
+function UITag({ type = "primary", children }) {
   const tagClasses = tv({
     base: "inline-flex items-center px-3 py-1 text-sm font-medium transition-colors duration-300 rounded-full whitespace-nowrap",
     variants: {
@@ -24,20 +19,11 @@ function UITag({ slug, title, type = "primary" }) {
     },
   });
 
-  return (
-    <Link
-      key={slug}
-      to={`/blog/tag/${slug}`}
-      className={tagClasses({ color: type })}
-    >
-      {capitalizeString(title)}
-    </Link>
-  );
+  return <span className={tagClasses({ color: type })}>{children}</span>;
 }
 
 UITag.propTypes = {
-  slug: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
   type: PropTypes.string,
 };
 

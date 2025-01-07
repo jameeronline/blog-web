@@ -1,28 +1,62 @@
 import { useParams } from "react-router";
 import { useAuthor } from "../graph-queries/get-author-posts";
-import ArticleSummary from "../components/blog-preview";
-import ArticleGrid from "../components/post-grid";
+import { useAuthorDetails } from "../graph-queries/get-queries";
+
+//components
+import PostGrid from "../components/post-grid";
 
 const Author = () => {
   const { author } = useParams();
 
   const { data, isLoading, isError, error } = useAuthor(author);
+  const {
+    data: authorData,
+    isLoading: isLoadingAuthor,
+    isError: isErrorAuthor,
+    error: errorAuthor,
+  } = useAuthorDetails(author);
 
-  if (isLoading) {
+  if (isLoading || isLoadingAuthor) {
     return <div>Loading...</div>;
   }
 
-  if (isError) {
-    return <div>Error fetching data {JSON.stringify(error)}</div>;
+  if (isError || isErrorAuthor) {
+    return (
+      <div>
+        Error fetching data{" "}
+        {JSON.stringify(error) || JSON.stringify(errorAuthor)}
+      </div>
+    );
   }
+
+  const { name, jobPosition, avatar } = authorData[0];
+
+  console.log(jobPosition);
 
   return (
     <section className="">
-      <header>
-        <h1 className="text-2xl font-bold mt-12 mb-6">Blog Posts By: Author</h1>
+      <header className="mb-12 mt-12 text-center">
+        <figure className="flex justify-center mb-6">
+          {author && avatar?.url && (
+            <img
+              src={avatar?.url}
+              alt={name}
+              className="w-16 aspect-square rounded-full object-cover my-0"
+            />
+          )}
+        </figure>
+        <div>
+          <p className="text-xs text-typography-tertiary uppercase">
+            <span>Blog Posts By</span>
+          </p>
+          <h1 className="text-2xl font-bold"> {name}</h1>
+          <p className="text-primary-600 text-sm">
+            (<span>{data?.length}</span> items)
+          </p>
+        </div>
       </header>
       <div className="grid grid-cols-4 gap-8 gap-y-12 md:grid-cols-8 lg:grid-cols-12">
-        <ArticleGrid posts={data} />
+        <PostGrid posts={data} />
       </div>
     </section>
   );

@@ -1,28 +1,16 @@
-import React, { useEffect } from "react";
-//import PostCard from "../components/post-card";
-// import Image1 from "../assets/image1.jpg";
-// import Image2 from "../assets/image2.jpg";
-// import Image3 from "../assets/image3.jpg";
-// import Image4 from "../assets/image4.jpg";
-// import Image5 from "../assets/image5.jpg";
-// import Image6 from "../assets/image6.jpg";
-// import Image7 from "../assets/image7.jpg";
-// import Image8 from "../assets/image8.jpg";
-// import Image9 from "../assets/image9.jpg";
-
 //react-router
-import { Outlet } from "react-router";
+import { Link, Outlet } from "react-router";
 import { useLocation } from "react-router";
 
 //API call to get the posts
-import * as contentful from "contentful";
 import { useRecentPosts } from "../graph-queries/recent-posts";
 import { useFeaturedPosts } from "../graph-queries/get-featured-posts";
 
 //components
-import RecentPost from "../components/recent-post";
+import PostGrid from "../components/post-grid";
+//import FeaturedHeader from "../components/featured-header";
 import FeaturedPostCard from "../components/featured-post";
-import FeaturedHeader from "../components/featured-header";
+import UIButton from "../components/ui/ui-button";
 
 // const posts = [
 //   {
@@ -160,9 +148,10 @@ const Home = () => {
 
   return (
     <>
-      <section>
+      {/* <section>
         <FeaturedHeader />
-      </section>
+      </section> */}
+      {/* FEATURED POSTS */}
       <section>
         <header>
           <h1 className="text-2xl font-bold mt-12 mb-6">Featured Posts</h1>
@@ -179,17 +168,20 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="">
+      {/* RECENT POSTS */}
+      <section>
         <header>
-          <h2 className="text-2xl font-bold mt-12 mb-6">All Blog Posts</h2>
+          <h2 className="text-2xl font-bold mt-12 mb-6">Recent Posts</h2>
         </header>
         <div className="grid grid-cols-4 gap-8 gap-y-12 md:grid-cols-8 lg:grid-cols-12">
-          {recentPosts.map((post) => (
-            <div key={post.sys.id} className="col-span-4">
-              <RecentPost post={post} />
-            </div>
-          ))}
+          <PostGrid posts={recentPosts} />
         </div>
+
+        <footer className="flex justify-center mt-10">
+          <Link to="/blog">
+            <UIButton>Read More Posts</UIButton>
+          </Link>
+        </footer>
       </section>
     </>
   );

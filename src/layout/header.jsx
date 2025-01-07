@@ -76,7 +76,9 @@ const Header = () => {
                         `flex p-2 hover:rounded-sm hover:text-gray-500 hover:bg-primary-100/50 lg:hover:bg-transparent transition-colors duration-200 ${
                           isPending ? "pending" : ""
                         } ${
-                          isActive ? "text-primary-600 pointer-events-none" : ""
+                          isActive
+                            ? "text-primary-600 pointer-events-none underline underline-offset-8 hover:text-primary-500"
+                            : ""
                         }`
                       }
                     >
