@@ -9,24 +9,16 @@ import { BLOCKS, INLINES, MARKS } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 //components
+import SEO from "../components/seo-helmet";
 import InlineNewsLetter from "../components/inline-newsletter";
-import SEO from "../components/SEO";
+import CodeBlock from "../components/code-copy";
+import SocialShare from "../components/social-share";
 
 //libraries
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
-import {
-  EmailShareButton,
-  FacebookShareButton,
-  LinkedinShareButton,
-  TwitterShareButton,
-  WhatsappShareButton,
-} from "react-share";
-
 //utilities
 import { capitalizeString, formatDateString } from "../utilities/functions";
-import CodeBlock from "../components/code-copy";
-import SocialShare from "../components/social-share";
 
 const Post = () => {
   const { state } = useLocation();
@@ -82,11 +74,7 @@ const Post = () => {
           (item) => item.sys.id === inlineId
         );
 
-        return (
-          <>
-            <CodeBlock code={code} language={language} />
-          </>
-        );
+        return <CodeBlock code={code} language={language} />;
       },
     },
   };
