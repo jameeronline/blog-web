@@ -49,9 +49,6 @@ const FeaturedPostCard = ({ post, size = "DEFAULT" }) => {
     size,
   });
 
-  console.log(base);
-  console.log(titleClass);
-
   return (
     <article className={base()}>
       <figure className={image()}>

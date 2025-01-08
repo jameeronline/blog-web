@@ -27,6 +27,9 @@ import { DarkModeProvider } from "./context/darkmode-context";
 import Error from "./routes/error";
 import NotFound from "./routes/not-found";
 
+//SEO
+import { HelmetProvider } from "react-helmet-async";
+
 const queryClient = new QueryClient();
 
 const routes = createBrowserRouter([
@@ -102,25 +105,27 @@ const routes = createBrowserRouter([
 function App() {
   return (
     <>
-      <DarkModeProvider>
-        <QueryClientProvider client={queryClient}>
-          <RouterProvider router={routes}></RouterProvider>
-          <ToastContainer
-            position="bottom-right"
-            autoClose={5000}
-            hideProgressBar
-            newestOnTop={false}
-            closeOnClick={false}
-            closeButton={false}
-            limit={1}
-            rtl={false}
-            pauseOnFocusLoss={false}
-            draggable={false}
-            pauseOnHover={false}
-            theme="dark"
-          />
-        </QueryClientProvider>
-      </DarkModeProvider>
+      <HelmetProvider>
+        <DarkModeProvider>
+          <QueryClientProvider client={queryClient}>
+            <RouterProvider router={routes}></RouterProvider>
+            <ToastContainer
+              position="bottom-right"
+              autoClose={5000}
+              hideProgressBar
+              newestOnTop={false}
+              closeOnClick={false}
+              closeButton={false}
+              limit={1}
+              rtl={false}
+              pauseOnFocusLoss={false}
+              draggable={false}
+              pauseOnHover={false}
+              theme="dark"
+            />
+          </QueryClientProvider>
+        </DarkModeProvider>
+      </HelmetProvider>
     </>
   );
 }

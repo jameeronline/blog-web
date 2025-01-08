@@ -59,7 +59,7 @@ const Header = () => {
 
             {/* Menu */}
             <nav
-              className={`absolute top-full bg-gray-50 p-4 -left-6 -right-6 lg:w-auto lg:p-0 lg:bg-transparent
+              className={`absolute top-full bg-gray-50 dark:bg-primary-900 p-4 -left-6 -right-6 lg:w-auto lg:p-0 lg:bg-transparent
                  lg:relative lg:visible ${
                    isToggleOpen
                      ? "visible opacity-100 backdrop-blur-sm"
@@ -108,15 +108,15 @@ const Header = () => {
                 <div className="absolute w-6 transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
                   <span
                     aria-hidden="true"
-                    className="absolute block h-0.5 w-6 -translate-y-2 transform rounded-full bg-secondary-600 transition-all duration-300"
+                    className="absolute block h-0.5 w-6 -translate-y-2 transform rounded-full bg-primary-600 transition-all duration-300"
                   ></span>
                   <span
                     aria-hidden="true"
-                    className="absolute block h-0.5 w-6 transform rounded-full bg-secondary-600 transition duration-300"
+                    className="absolute block h-0.5 w-6 transform rounded-full bg-primary-600 transition duration-300"
                   ></span>
                   <span
                     aria-hidden="true"
-                    className="absolute block h-0.5 w-6 origin-top-left translate-y-2 transform rounded-full bg-secondary-600 transition-all duration-300"
+                    className="absolute block h-0.5 w-6 origin-top-left translate-y-2 transform rounded-full bg-primary-600 transition-all duration-300"
                   ></span>
                 </div>
               </button>

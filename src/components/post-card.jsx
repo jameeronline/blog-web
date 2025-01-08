@@ -1,10 +1,6 @@
 import { Link } from "react-router";
 import PropTypes from "prop-types";
-import {
-  capitalizeString,
-  formatDateString,
-  slugify,
-} from "../utilities/functions";
+import { capitalizeString, formatDateString } from "../utilities/functions";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const PostCard = ({ post }) => {
@@ -24,7 +20,6 @@ const PostCard = ({ post }) => {
         <LazyLoadImage
           src={postThumbnail.url}
           alt={title}
-          effect="opacity"
           className="w-full aspect-video object-cover"
         />
       </figure>

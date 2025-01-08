@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { tv } from "tailwind-variants";
 
-export default function UIButton({ children, type }) {
+export default function UIButton({ children, type, ...args }) {
   const buttonClasses = tv({
     base: "inline-flex h-12 items-center justify-center gap-2 whitespace-nowrap rounded-md px-6 text-sm font-medium tracking-wide transition duration-300 focus-visible:outline-none disabled:cursor-not-allowed disabled:shadow-none",
     variants: {
@@ -17,7 +17,11 @@ export default function UIButton({ children, type }) {
     },
   });
 
-  return <button className={buttonClasses({ type })}>{children}</button>;
+  return (
+    <button className={buttonClasses({ type })} {...args}>
+      {children}
+    </button>
+  );
 }
 
 UIButton.propTypes = {

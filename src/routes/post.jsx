@@ -7,23 +7,26 @@ import { useLocation, Link, useParams } from "react-router";
 //Contentful Rich text renderer
 import { BLOCKS, INLINES, MARKS } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
-import SyntaxHighlighter from "react-syntax-highlighter";
-import {
-  github,
-  vs2015,
-  atomOneDark,
-} from "react-syntax-highlighter/dist/esm/styles/hljs";
 
 //components
 import InlineNewsLetter from "../components/inline-newsletter";
+import SEO from "../components/SEO";
 
 //libraries
-import { CopyToClipboard } from "react-copy-to-clipboard";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+
+import {
+  EmailShareButton,
+  FacebookShareButton,
+  LinkedinShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+} from "react-share";
 
 //utilities
 import { capitalizeString, formatDateString } from "../utilities/functions";
 import CodeBlock from "../components/code-copy";
+import SocialShare from "../components/social-share";
 
 const Post = () => {
   const { state } = useLocation();
@@ -44,6 +47,7 @@ const Post = () => {
   const {
     title,
     author,
+    summary,
     details,
     postThumbnail,
     tagsCollection,
@@ -93,8 +97,15 @@ const Post = () => {
       <section className="col-span-4 md:col-span-8">
         <header className="mb-8"></header>
 
+        <SEO title={title} description={summary} name={title} img={summary} />
+
         <div className="prose lg:prose-lg dark:prose-invert mb-10">
-          <h1>{title}</h1>
+          <p>
+            <span className="text-primary-600 text-sm md:font-semibold md:text-base">
+              {formatDateString(sys.publishedAt)}
+            </span>
+          </p>
+          <h1 className="mb-6">{title}</h1>
           <div className="inline-flex items-center gap-4">
             {author && author?.avatar?.url && (
               <img
@@ -103,21 +114,30 @@ const Post = () => {
                 className="w-12 aspect-square rounded-full object-cover my-0"
               />
             )}
-            <p className="flex flex-col my-0">
+            <p className="flex flex-col gap-2 my-0">
               <Link
                 to={`/blog/author/${author?.slug}`}
-                className="text-primary-600 font-semibold no-underline"
+                className="text-typography-secondary font-semibold no-underline"
               >
                 {author?.name}
               </Link>
-              <span className="text-typography-tertiary text-sm">
-                {formatDateString(sys.publishedAt)}
-              </span>
+
+              {/* Social Share Links */}
+              <SocialShare
+                url={window.location.href}
+                title={title}
+                description={summary}
+                hashtag="#React, #CSS"
+              />
             </p>
           </div>
           {postThumbnail && (
             <figure>
-              <LazyLoadImage alt={title} src={postThumbnail.url} />
+              <LazyLoadImage
+                alt={title}
+                src={postThumbnail.url}
+                className="aspect-video object-cover"
+              />
             </figure>
           )}
           {documentToReactComponents(details?.json, options)}
