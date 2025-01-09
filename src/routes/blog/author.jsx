@@ -1,9 +1,9 @@
 import { useParams } from "react-router";
-import { useAuthor } from "../graph-queries/get-author-posts";
-import { useAuthorDetails } from "../graph-queries/get-queries";
+import { useAuthor } from "../../graph-queries/get-author-posts";
+import { useAuthorDetails } from "../../graph-queries/get-queries";
 
 //components
-import PostGrid from "../components/post-grid";
+import PostGrid from "../../components/post-grid";
 
 const Author = () => {
   const { author } = useParams();
@@ -29,9 +29,7 @@ const Author = () => {
     );
   }
 
-  const { name, jobPosition, avatar } = authorData[0];
-
-  console.log(jobPosition);
+  const { name, avatar } = authorData[0];
 
   return (
     <section className="">

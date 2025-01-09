@@ -1,8 +1,8 @@
 import { useParams } from "react-router";
-import { useCategory } from "../graph-queries/get-category-posts";
+import { useCategory } from "../../graph-queries/get-category-posts";
 
 //components
-import PostGrid from "../components/post-grid";
+import PostGrid from "../../components/post-grid";
 
 const Category = () => {
   const { category } = useParams();

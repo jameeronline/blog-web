@@ -2,11 +2,11 @@ import { Helmet } from "react-helmet-async";
 import PropTypes from "prop-types";
 
 const SEO = ({
-  title = "Default Title",
+  title = "WebDev Blog",
   description = "Default description",
   url = window.location.href, // Default to the current URL
   img = "/default-image.jpg", // Default image
-  name = "Website Name", // Site name
+  name = "az-webdev.netlify.app", // Site name
   type = "website", // Default Open Graph type
 }) => {
   return (

@@ -1,8 +1,8 @@
 import { useParams } from "react-router";
-import { useTag } from "../graph-queries/get-tag-posts";
+import { useTag } from "../../graph-queries/get-tag-posts";
 
 //components
-import PostGrid from "../components/post-grid";
+import PostGrid from "../../components/post-grid";
 
 const Tag = () => {
   const { tag } = useParams();

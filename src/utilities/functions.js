@@ -58,3 +58,10 @@ export function formatDateString(dateString) {
   const date = new Date(dateString);
   return date.toLocaleDateString("en-US", options).replace(/,/g, "");
 }
+
+// This function converts an array of objects into a string of names prefixed with '#'.
+export function convertArrayToString(arr) {
+  if (Array.isArray(arr) && arr.length > 0) {
+    return arr.map((item) => `#${item.title}`).join(", ");
+  }
+}

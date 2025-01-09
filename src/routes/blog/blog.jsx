@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import PostGrid from "../components/post-grid";
-import { useFetchAllPosts } from "../graph-queries/get-all-posts";
+import PostGrid from "../../components/post-grid";
+import { useFetchAllPosts } from "../../graph-queries/get-all-posts";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 import { useSearchParams } from "react-router";
 

@@ -7,29 +7,30 @@ import { createBrowserRouter, RouterProvider } from "react-router";
 import { ToastContainer } from "react-toastify";
 
 //context import
+import { ConfigProvider } from "./context/config-context";
 
 //components import
 import Home from "./routes/home";
-import Blog from "./routes/blog";
+import Blog from "./routes/blog/blog";
 import About from "./routes/about";
-import Projects from "./routes/projects";
+import Projects from "./routes/blog/projects";
 import Newsletter from "./routes/newsletter";
 
-import Category from "./routes/category";
-import Author from "./routes/author";
-import Tag from "./routes/tag";
-import Post from "./routes/post";
+import Category from "./routes/blog/category";
+import Author from "./routes/blog/author";
+import Tag from "./routes/blog/tag";
+import Post from "./routes/blog/post";
 
 //react query imports
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import RootLayout from "./layout/layout";
-import { DarkModeProvider } from "./context/darkmode-context";
 import Error from "./routes/error";
 import NotFound from "./routes/not-found";
 
 //SEO
 import { HelmetProvider } from "react-helmet-async";
 
+//react query client
 const queryClient = new QueryClient();
 
 const routes = createBrowserRouter([
@@ -106,7 +107,7 @@ function App() {
   return (
     <>
       <HelmetProvider>
-        <DarkModeProvider>
+        <ConfigProvider>
           <QueryClientProvider client={queryClient}>
             <RouterProvider router={routes}></RouterProvider>
             <ToastContainer
@@ -124,7 +125,7 @@ function App() {
               theme="dark"
             />
           </QueryClientProvider>
-        </DarkModeProvider>
+        </ConfigProvider>
       </HelmetProvider>
     </>
   );

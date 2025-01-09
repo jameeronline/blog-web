@@ -2,6 +2,8 @@ import { Link } from "react-router";
 import PropTypes from "prop-types";
 import { capitalizeString, formatDateString } from "../utilities/functions";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import UITag from "./ui/ui-tag";
+import { ArrowUpRightIcon } from "@heroicons/react/24/solid";
 
 const PostCard = ({ post }) => {
   const {
@@ -34,37 +36,30 @@ const PostCard = ({ post }) => {
           <span className="leading-none">|</span>
           <span>{formatDateString(sys.publishedAt)}</span>
         </p>
-        <h1 className="font-bold text-2xl text-typography">
+        <h1 className="font-bold text-2xl text-typography flex justify-between items-baseline gap-3">
           <Link to={`/post/${slug}`} state={{ id: sys.id }}>
             <span>{title}</span>
           </Link>
+          <ArrowUpRightIcon className="size-6 flex-none relative top-1" />
         </h1>
         <p className="line-clamp-2 text-typography-secondary">{summary}</p>
       </div>
 
-      <div className="flex gap-2 mb-4">
+      <div className="flex flex-wrap gap-2 mb-4">
         {categoryCollection.items.map(({ title, slug }) => (
-          <Link
-            key={slug}
-            to={`/blog/category/${slug}`}
-            className="inline-flex items-center px-2 py-1 text-sm font-medium text-secondary-800 bg-secondary-50 hover:bg-secondary-100/80 hover:text-secondary-900 transition-colors duration-300 rounded-full"
-          >
-            {title}
+          <Link key={slug} to={`/blog/category/${slug}`}>
+            <UITag type="secondary">{title}</UITag>
+          </Link>
+        ))}
+
+        {tagsCollection.items.map(({ title, slug }) => (
+          <Link key={slug} to={`/blog/tag/${slug}`}>
+            <UITag>{title}</UITag>
           </Link>
         ))}
       </div>
 
-      <div className="flex gap-2">
-        {tagsCollection.items.map(({ title, slug }) => (
-          <Link
-            key={slug}
-            to={`/blog/tag/${slug}`}
-            className="inline-flex items-center px-2 py-1 text-sm font-medium text-primary-800 bg-primary-50 hover:bg-primary-100/80 hover:text-primary-900 transition-colors duration-300 rounded-full"
-          >
-            {capitalizeString(title)}
-          </Link>
-        ))}
-      </div>
+      <div className="flex gap-2"></div>
     </div>
   );
 };

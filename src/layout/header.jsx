@@ -8,7 +8,7 @@ import { Link, Navigate, NavLink } from "react-router";
 import { UIToggle } from "../components/ui/ui-toggle";
 
 //context
-import { useDarkMode } from "../context/darkmode-context";
+import { useConfig } from "../context/config-context";
 
 const menuItems = [
   {
@@ -31,18 +31,20 @@ const menuItems = [
 
 const Header = () => {
   const navigate = useNavigate();
-  const { isDarkMode } = useDarkMode();
   const [isToggleOpen, setIsToggleOpen] = useState(false);
 
+  //config
+  const { theme } = useConfig();
+
   useEffect(() => {
-    if (isDarkMode) {
+    if (theme === "dark") {
       document.documentElement.classList.add("dark");
       document.documentElement.dataset.theme = "dark";
     } else {
       document.documentElement.classList.remove("dark");
       document.documentElement.dataset.theme = "light";
     }
-  }, [isDarkMode]);
+  }, [theme]);
 
   return (
     <>
@@ -59,7 +61,7 @@ const Header = () => {
 
             {/* Menu */}
             <nav
-              className={`absolute top-full bg-gray-50 dark:bg-primary-900 p-4 -left-6 -right-6 lg:w-auto lg:p-0 lg:bg-transparent
+              className={`absolute top-full bg-gray-50 dark:bg-primary-900 lg:dark:bg-transparent p-4 -left-6 -right-6 lg:w-auto lg:p-0 lg:bg-transparent
                  lg:relative lg:visible ${
                    isToggleOpen
                      ? "visible opacity-100 backdrop-blur-sm"
