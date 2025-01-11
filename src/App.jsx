@@ -29,6 +29,7 @@ import NotFound from "./routes/not-found";
 
 //SEO
 import { HelmetProvider } from "react-helmet-async";
+import HOCPage from "./routes/hoc-page";
 
 //react query client
 const queryClient = new QueryClient();
@@ -94,6 +95,10 @@ const routes = createBrowserRouter([
       {
         path: "newsletter",
         element: <Newsletter />,
+      },
+      {
+        path: "hoc-page",
+        element: <HOCPage />,
       },
       {
         path: "*",

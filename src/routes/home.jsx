@@ -13,6 +13,7 @@ import FeaturedPostCard from "../components/featured-post";
 import UIButton from "../components/ui/ui-button";
 import PinnedPost from "../components/pinned-post";
 import { Spinner } from "../components/spinner";
+import EnhancedGreeting from "../components/hoc-button";
 
 const Home = () => {
   const location = useLocation();
