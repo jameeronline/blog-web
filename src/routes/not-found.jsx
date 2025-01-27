@@ -1,5 +1,5 @@
 import { Link, useRouteError, useNavigate } from "react-router";
-import UIButton from "../components/ui/ui-button";
+import UIButton from "@components/ui/ui-button";
 import { HomeIcon } from "@heroicons/react/24/solid";
 
 const NotFound = ({ message }) => {

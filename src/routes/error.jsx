@@ -3,12 +3,11 @@ import { Link, useRouteError, useNavigate } from "react-router";
 const Error = () => {
   const error = useRouteError();
   const navigate = useNavigate();
-  console.log(error);
 
   return (
     <div id="error-page" className="text-center prose mx-auto">
       <h1 className="text-6xl mb-4">
-        <span className="text-teal-500">Oops!</span> <br />
+        <span className="text-primary-500">Oops!</span> <br />
         Sorry, an unexpected error has occurred.
       </h1>
       <p className="text-lg text-slate-500">

@@ -48,7 +48,8 @@ const Header = () => {
 
   return (
     <>
-      <header className="">
+      <header className="sticky top-0 bg-white">
+        {/* <div className="absolute inset-0 -z-10 -top-1/3 h-full w-full mesh-gradient-header opacity-90"></div> */}
         <div className="w-full xl:container mx-auto px-4">
           <div className="flex justify-between items-center py-4 relative">
             {/* Logo */}
@@ -61,12 +62,12 @@ const Header = () => {
 
             {/* Menu */}
             <nav
-              className={`absolute top-full bg-gray-50 dark:bg-primary-900 lg:dark:bg-transparent p-4 -left-6 -right-6 lg:w-auto lg:p-0 lg:bg-transparent
-                 lg:relative lg:visible ${
-                   isToggleOpen
-                     ? "visible opacity-100 backdrop-blur-sm"
-                     : "invisible opacity-0"
-                 }}`}
+              className={`flex items-center justify-center fixed top-0 transition-all duration-300 bg-gray-50 dark:bg-background-body lg:dark:bg-transparent p-4 inset-0 lg:w-auto lg:p-0 lg:bg-transparent lg:relative lg:visible
+              ${
+                isToggleOpen
+                  ? "visible opacity-100 backdrop-blur-sm left-0"
+                  : "invisible opacity-0"
+              }}`}
             >
               <ul className="flex gap-2 items-center text-typography-primary flex-col lg:flex-row lg:gap-4">
                 {menuItems.map((item, index) => (

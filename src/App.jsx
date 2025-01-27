@@ -1,7 +1,11 @@
 import "./css/styles.css";
 
 //routes import
-import { createBrowserRouter, RouterProvider } from "react-router";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  ScrollRestoration,
+} from "react-router";
 
 //toastify
 import { ToastContainer } from "react-toastify";
@@ -10,16 +14,16 @@ import { ToastContainer } from "react-toastify";
 import { ConfigProvider } from "./context/config-context";
 
 //components import
-import Home from "./routes/home";
-import Blog from "./routes/blog/blog";
-import About from "./routes/about";
-import Projects from "./routes/blog/projects";
-import Newsletter from "./routes/newsletter";
+import Home from "@routes/home";
+import Blog from "@routes/blog/blog";
+import About from "@routes/about";
+import Projects from "@routes/projects";
+import Newsletter from "@routes/newsletter";
 
-import Category from "./routes/blog/category";
-import Author from "./routes/blog/author";
-import Tag from "./routes/blog/tag";
-import Post from "./routes/blog/post";
+import Category from "@routes/blog/category";
+import Author from "@routes/blog/author";
+import Tag from "@routes/blog/tag";
+import Post from "@routes/blog/post";
 
 //react query imports
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -34,10 +38,20 @@ import HOCPage from "./routes/hoc-page";
 //react query client
 const queryClient = new QueryClient();
 
+//scroll to top
+import ScrollToTop from "./components/scroll-top-top";
+import { Suspense } from "react";
+import LoadingSpinner from "./components/loading-spinner";
+
 const routes = createBrowserRouter([
   {
     path: "/",
-    element: <RootLayout />,
+    element: (
+      <>
+        <RootLayout />
+        <ScrollRestoration />
+      </>
+    ),
     errorElement: <Error />,
     children: [
       {

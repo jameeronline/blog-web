@@ -3,17 +3,17 @@ import { Link, Outlet } from "react-router";
 import { useLocation } from "react-router";
 
 //API call to get the posts
-import { useRecentPosts } from "../graph-queries/recent-posts";
-import { useFeaturedPosts } from "../graph-queries/get-featured-posts";
+import { useRecentPosts } from "@queries/recent-posts";
+import { useFeaturedPosts } from "@queries/get-featured-posts";
 
 //components
-import PostGrid from "../components/post-grid";
-//import FeaturedHeader from "../components/featured-header";
-import FeaturedPostCard from "../components/featured-post";
-import UIButton from "../components/ui/ui-button";
-import PinnedPost from "../components/pinned-post";
-import { Spinner } from "../components/spinner";
-import EnhancedGreeting from "../components/hoc-button";
+import PostGrid from "@components/post-grid";
+import FeaturedHeader from "@components/featured-header";
+import FeaturedPostCard from "@components/featured-post";
+import UIButton from "@components/ui/ui-button";
+import PinnedPost from "@components/pinned-post";
+import { Spinner } from "@components/spinner";
+import EnhancedGreeting from "@components/hoc-button";
 
 const Home = () => {
   const location = useLocation();
@@ -51,16 +51,17 @@ const Home = () => {
 
   return (
     <>
+      <FeaturedHeader />
       <section>
         <header>
           <h1 className="text-2xl font-bold mt-12 mb-6">Featured Posts</h1>
         </header>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-8 lg:grid-cols-12">
-          <div className="col-span-4 md:col-span-8 lg:col-span-6">
+          <div className="col-span-4 md:col-span-8 lg:col-span-8">
             <FeaturedPostCard post={featuredPosts[0]} />
           </div>
 
-          <div className="col-span-4 md:col-span-8 lg:col-span-6">
+          <div className="col-span-4 md:col-span-8 lg:col-span-4">
             <FeaturedPostCard post={featuredPosts[1]} size="small" />
             <FeaturedPostCard post={featuredPosts[2]} size="small" />
             <FeaturedPostCard post={featuredPosts[0]} size="small" />
@@ -82,11 +83,11 @@ const Home = () => {
           <PostGrid posts={recentPosts} />
         </div>
 
-        <footer className="flex justify-center mt-10">
+        {/* <footer className="flex justify-center mt-10">
           <Link to="/blog">
             <UIButton>Read More Posts</UIButton>
           </Link>
-        </footer>
+        </footer> */}
       </section>
     </>
   );

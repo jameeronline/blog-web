@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { POST_CARD_FIELDS, QUERY_CONFIG, QUERY_URL } from "./config";
 
 export const GET_ALL_POSTS = `
@@ -46,5 +46,6 @@ export const useFetchAllPosts = (pageLength, currentPage) => {
   return useQuery({
     queryKey: ["all-posts", currentPage],
     queryFn: () => fetchAllPosts(pageLength, currentPage),
+    placeholderData: keepPreviousData,
   });
 };

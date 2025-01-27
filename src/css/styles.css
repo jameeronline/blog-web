@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 :root {
   --primary-50: #faf5ff;
   --primary-100: #f4e8ff;
@@ -56,4 +58,15 @@
   --text-color-quaternary: #e2e8f0;
 
   --bg-color-body: #090d1f;
+}
+
+.mesh-gradient-header{
+  background-color:hsla(333,0%,100%,1);
+  background-image:radial-gradient(circle at 0% 0%, hsla(64,82%,77%,0.35) 3.1210986267166043%,transparent 40%),radial-gradient(circle at 20% 0%, hsla(5,77%,74%,0.35) 3.1210986267166043%,transparent 40%),radial-gradient(circle at 40% 0%, hsla(315,77%,74%,0.35) 3.1210986267166043%,transparent 40%),radial-gradient(circle at 60% 0%, hsla(256,77%,74%,0.35) 3.1210986267166043%,transparent 40%),radial-gradient(circle at 80% 0%, hsla(191,77%,74%,0.35) 3.1210986267166043%,transparent 40%),radial-gradient(circle at 100% 0%, hsla(152,77%,74%,0.35) 3%,transparent 40%);
+  background-blend-mode:normal,normal,normal,normal,normal,normal;
+}
+
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
 }

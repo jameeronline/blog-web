@@ -2,7 +2,7 @@ import { useParams } from "react-router";
 import { useCategory } from "../../graph-queries/get-category-posts";
 
 //components
-import PostGrid from "../../components/post-grid";
+import PostGrid from "@components/post-grid";
 
 const Category = () => {
   const { category } = useParams();
@@ -15,6 +15,10 @@ const Category = () => {
 
   if (isError) {
     return <div>Error fetching data {JSON.stringify(error)}</div>;
+  }
+
+  if (!data || data.length === 0) {
+    return <div>No posts available in this category.</div>;
   }
 
   return (

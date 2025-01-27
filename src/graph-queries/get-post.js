@@ -2,8 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import { QUERY_CONFIG, QUERY_URL } from "./config";
 
 export const GET_POST = `
-    query($postID: String!){
-        blog(id: $postID){
+    query($postSlug: String!){
+        blogCollection(where: {
+          slug: $postSlug
+        }, limit: 1){
+          items{
             title
             summary
             details{
@@ -57,17 +60,17 @@ export const GET_POST = `
                 publishedAt
                 id
             }
+          }
         }
     }
 `;
 
-const fetchPost = async (id) => {
-  console.log("i");
+const fetchPost = async (slug) => {
   const response = await fetch(QUERY_URL, {
     ...QUERY_CONFIG,
     body: JSON.stringify({
       query: GET_POST,
-      variables: { postID: id },
+      variables: { postSlug: slug },
     }),
   });
 
@@ -75,15 +78,16 @@ const fetchPost = async (id) => {
     throw new Error(`HTTP error! Status: ${response.status}`);
   }
 
-  console.log("2");
   const data = await response.json();
-  //console.log(data);
-  return data.data.blog; // Adjust based on your GraphQL query structure
+  return data.data.blogCollection.items.length > 0
+    ? data.data.blogCollection.items.at(0)
+    : [];
 };
 
-export const usePost = (id) => {
+export const usePost = (slug) => {
+  console.log(slug);
   return useQuery({
-    queryKey: ["get-post", id],
-    queryFn: () => fetchPost(id),
+    queryKey: ["get-post", slug],
+    queryFn: () => fetchPost(slug),
   });
 };

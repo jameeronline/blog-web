@@ -17,7 +17,7 @@ const RootLayout = () => {
   return (
     <>
       <Header />
-      <main className="w-full xl:container mx-auto px-4 py-10">
+      <main className="w-full xl:container mx-auto px-4">
         {isLoading && (
           <motion.div
             initial={{ opacity: 0 }}

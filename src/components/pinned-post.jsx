@@ -4,9 +4,13 @@ import {
   capitalizeString,
   formatDateString,
   slugify,
-} from "../utilities/functions";
+} from "@utilities/functions";
 import UITag from "./ui/ui-tag";
 import { tv } from "tailwind-variants";
+
+//slider
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
 
 const PinnedPost = ({ post, size = "DEFAULT" }) => {
   const featuredPostClasses = tv({
@@ -28,6 +32,9 @@ const PinnedPost = ({ post, size = "DEFAULT" }) => {
       },
     },
   });
+
+  //init slider
+  const [emblaRef] = useEmblaCarousel({ loop: false }, [Autoplay()]);
 
   const {
     author,
@@ -52,55 +59,169 @@ const PinnedPost = ({ post, size = "DEFAULT" }) => {
   });
 
   return (
-    <article className={base()}>
-      <figure className={image()}>
-        <img
-          src={postThumbnail.url}
-          alt={`Thumbnail for ${title}`}
-          className="w-full aspect-[21/9] object-cover"
-        />
-      </figure>
+    <div className="overflow-hidden" ref={emblaRef}>
+      <div className="flex">
+        <div className="embla__slide">
+          <article className={base()}>
+            <figure className={image()}>
+              <img
+                src={postThumbnail.url}
+                alt={`Thumbnail for ${title}`}
+                className="w-full aspect-[21/9] object-cover"
+              />
+            </figure>
 
-      <div className={body()}>
-        <header className="flex flex-col gap-3 mb-6">
-          <p className="text-primary-600 text-sm flex items-center gap-2">
-            {author && (
-              <Link to={`/blog/author/${author?.slug}`}>
-                <span>{author?.name}</span>
-              </Link>
-            )}
-            <span className="leading-none" aria-hidden="true">
-              |
-            </span>
-            <time dateTime={sys.publishedAt}>
-              {formatDateString(sys.publishedAt)}
-            </time>
-          </p>
-          <h2 className={titleClass()} title={title}>
-            <Link to={`/post/${slug}`} state={{ id: sys.id }}>
-              <span>{title}</span>
-            </Link>
-          </h2>
-          <p className="line-clamp-3 text-typography-secondary">{summary}</p>
-        </header>
+            <div className={body()}>
+              <header className="flex flex-col gap-3 mb-6">
+                <p className="text-primary-600 text-sm flex items-center gap-2">
+                  {author && (
+                    <Link to={`/blog/author/${author?.slug}`}>
+                      <span>{author?.name}</span>
+                    </Link>
+                  )}
+                  <span className="leading-none" aria-hidden="true">
+                    |
+                  </span>
+                  <time dateTime={sys.publishedAt}>
+                    {formatDateString(sys.publishedAt)}
+                  </time>
+                </p>
+                <h2 className={titleClass()} title={title}>
+                  <Link to={`/post/${slug}`} state={{ id: sys.id }}>
+                    <span>{title}</span>
+                  </Link>
+                </h2>
+                <p className="line-clamp-3 text-typography-secondary">
+                  {summary}
+                </p>
+              </header>
 
-        <div className="flex gap-2 mb-4">
-          {categoryCollection.items.map(({ title, slug }) => (
-            <Link key={slug} to={`/blog/category/${slug}`}>
-              <UITag type="secondary">{title}</UITag>
-            </Link>
-          ))}
+              <div className="flex gap-2 mb-4">
+                {categoryCollection.items.map(({ title, slug }) => (
+                  <Link key={slug} to={`/blog/category/${slug}`}>
+                    <UITag type="secondary">{title}</UITag>
+                  </Link>
+                ))}
+              </div>
+
+              <div className={tagWrapper()}>
+                {tagsCollection.items.map(({ title, slug }) => (
+                  <Link key={slug} to={`/blog/tag/${slug}`}>
+                    <UITag>{title}</UITag>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </article>
         </div>
+        <div className="embla__slide">
+          <article className={base()}>
+            <figure className={image()}>
+              <img
+                src={postThumbnail.url}
+                alt={`Thumbnail for ${title}`}
+                className="w-full aspect-[21/9] object-cover"
+              />
+            </figure>
 
-        <div className={tagWrapper()}>
-          {tagsCollection.items.map(({ title, slug }) => (
-            <Link key={slug} to={`/blog/tag/${slug}`}>
-              <UITag>{title}</UITag>
-            </Link>
-          ))}
+            <div className={body()}>
+              <header className="flex flex-col gap-3 mb-6">
+                <p className="text-primary-600 text-sm flex items-center gap-2">
+                  {author && (
+                    <Link to={`/blog/author/${author?.slug}`}>
+                      <span>{author?.name}</span>
+                    </Link>
+                  )}
+                  <span className="leading-none" aria-hidden="true">
+                    |
+                  </span>
+                  <time dateTime={sys.publishedAt}>
+                    {formatDateString(sys.publishedAt)}
+                  </time>
+                </p>
+                <h2 className={titleClass()} title={title}>
+                  <Link to={`/post/${slug}`} state={{ id: sys.id }}>
+                    <span>{title}</span>
+                  </Link>
+                </h2>
+                <p className="line-clamp-3 text-typography-secondary">
+                  {summary}
+                </p>
+              </header>
+
+              <div className="flex gap-2 mb-4">
+                {categoryCollection.items.map(({ title, slug }) => (
+                  <Link key={slug} to={`/blog/category/${slug}`}>
+                    <UITag type="secondary">{title}</UITag>
+                  </Link>
+                ))}
+              </div>
+
+              <div className={tagWrapper()}>
+                {tagsCollection.items.map(({ title, slug }) => (
+                  <Link key={slug} to={`/blog/tag/${slug}`}>
+                    <UITag>{title}</UITag>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </article>
+        </div>
+        <div className="embla__slide">
+          <article className={base()}>
+            <figure className={image()}>
+              <img
+                src={postThumbnail.url}
+                alt={`Thumbnail for ${title}`}
+                className="w-full aspect-[21/9] object-cover"
+              />
+            </figure>
+
+            <div className={body()}>
+              <header className="flex flex-col gap-3 mb-6">
+                <p className="text-primary-600 text-sm flex items-center gap-2">
+                  {author && (
+                    <Link to={`/blog/author/${author?.slug}`}>
+                      <span>{author?.name}</span>
+                    </Link>
+                  )}
+                  <span className="leading-none" aria-hidden="true">
+                    |
+                  </span>
+                  <time dateTime={sys.publishedAt}>
+                    {formatDateString(sys.publishedAt)}
+                  </time>
+                </p>
+                <h2 className={titleClass()} title={title}>
+                  <Link to={`/post/${slug}`} state={{ id: sys.id }}>
+                    <span>{title}</span>
+                  </Link>
+                </h2>
+                <p className="line-clamp-3 text-typography-secondary">
+                  {summary}
+                </p>
+              </header>
+
+              <div className="flex gap-2 mb-4">
+                {categoryCollection.items.map(({ title, slug }) => (
+                  <Link key={slug} to={`/blog/category/${slug}`}>
+                    <UITag type="secondary">{title}</UITag>
+                  </Link>
+                ))}
+              </div>
+
+              <div className={tagWrapper()}>
+                {tagsCollection.items.map(({ title, slug }) => (
+                  <Link key={slug} to={`/blog/tag/${slug}`}>
+                    <UITag>{title}</UITag>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </article>
         </div>
       </div>
-    </article>
+    </div>
   );
 };
 

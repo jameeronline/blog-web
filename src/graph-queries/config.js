@@ -38,3 +38,5 @@ sys {
   id
 }
 `;
+
+export const BLOG_TYPE_META = `{ contentfulMetadata: { tags: { id_contains_some: ["blog"] } } }`;

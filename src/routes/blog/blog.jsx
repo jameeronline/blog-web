@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import PostGrid from "../../components/post-grid";
-import { useFetchAllPosts } from "../../graph-queries/get-all-posts";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
+import { useState } from "react";
 import { useSearchParams } from "react-router";
+import PostGrid from "@components/post-grid";
+import { useFetchAllPosts } from "@queries/get-all-posts";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 
 const Blog = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -37,7 +37,6 @@ const Blog = () => {
   const handleNextPage = () => {
     const newPage = currentPage + 1;
     setCurrentPage(newPage);
-    console.log(newPage + 1);
     setSearchParams({ page: newPage + 1 });
   };
 
@@ -77,7 +76,7 @@ const Blog = () => {
                       setSearchParams({ page: index + 1 });
                     }}
                     aria-label={`Goto Page ${index + 1}`}
-                    className={`items-center justify-center hidden border border-white h-10 gap-4 px-4 text-sm font-medium transition duration-300 focus-visible:outline-none md:inline-flex ${
+                    className={`items-center justify-center hidden border border-transparent h-10 gap-4 px-4 text-sm font-medium transition duration-300 focus-visible:outline-none md:inline-flex ${
                       currentPage === index
                         ? "border-b-primary-500 text-primary-500 hover:border-b-primary-600 hover:bg-primary-50 hover:text-primary-600 focus:border-b-primary-700 focus:bg-primary-50 focus:text-primary-700 pointer-events-none"
                         : "stroke-slate-700 text-slate-700 hover:bg-primary-50 hover:stroke-primary-500 hover:text-primary-500 focus:bg-primary-50 focus:stroke-primary-600 focus:text-primary-600"

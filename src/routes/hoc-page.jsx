@@ -1,5 +1,6 @@
-import withDataLoading from "../components/hoc-dataloding";
-import PostGrid from "../components/post-grid";
+import withDataLoading from "@components/hoc-dataloding";
+import PostGrid from "@components/post-grid";
+import { useRecentPosts } from "@/graph-queries/recent-posts";
 
 const RecentPostPage = ({ posts }) => {
   return (
@@ -9,6 +10,6 @@ const RecentPostPage = ({ posts }) => {
   );
 };
 
-const HOCPage = withDataLoading(RecentPostPage);
+const HOCPage = withDataLoading(useRecentPosts)(RecentPostPage);
 
 export default HOCPage;

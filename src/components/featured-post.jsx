@@ -4,7 +4,7 @@ import {
   capitalizeString,
   formatDateString,
   slugify,
-} from "../utilities/functions";
+} from "@utilities/functions";
 import UITag from "./ui/ui-tag";
 import { tv } from "tailwind-variants";
 
