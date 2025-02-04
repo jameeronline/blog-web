@@ -1,5 +1,6 @@
 import { Switch } from "@headlessui/react";
 import { useConfig } from "../../context/config-context";
+import { useEffect } from "react";
 
 export const UIToggle = () => {
   const { theme, updateConfig } = useConfig();

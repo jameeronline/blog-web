@@ -1,6 +1,11 @@
-import withDataLoading from "@components/hoc-dataloding";
+import withDataLoading from "@/components/hoc-data-loading";
 import PostGrid from "@components/post-grid";
 import { useRecentPosts } from "@/graph-queries/recent-posts";
+import { useFeaturedPosts } from "@/graph-queries/get-featured-posts";
+import { usePinnedPosts } from "@/graph-queries/get-pinned-posts";
+import { useCategory } from "@/graph-queries/get-category-posts";
+
+const category = "frontend-development";
 
 const RecentPostPage = ({ posts }) => {
   return (
@@ -10,6 +15,6 @@ const RecentPostPage = ({ posts }) => {
   );
 };
 
-const HOCPage = withDataLoading(useRecentPosts)(RecentPostPage);
+const HOCPage = withDataLoading(usePinnedPosts)(RecentPostPage);
 
 export default HOCPage;

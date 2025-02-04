@@ -14,17 +14,17 @@ const Error = () => {
         {error.statusText || error.message}
       </p>
 
-      {/* <div className="flex gap-2 justify-center mt-10">
-        <Button onClick={() => navigate(-1)} className="h-10">
+      <div className="flex gap-2 justify-center mt-10">
+        <Link onClick={() => navigate(-1)} className="h-10">
           <Undo2 />
           Back
-        </Button>
-        <Button asChild className="h-10">
+        </Link>
+        <Link asChild className="h-10">
           <Link to="/" className="no-underline">
             <House /> Back to Home
           </Link>
-        </Button>
-      </div> */}
+        </Link>
+      </div>
     </div>
   );
 };

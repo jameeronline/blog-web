@@ -1,9 +1,12 @@
 import { useParams } from "react-router";
-import { useAuthor } from "../../graph-queries/get-author-posts";
-import { useAuthorDetails } from "../../graph-queries/get-queries";
+import { useAuthor } from "@queries/get-author-posts";
+import { useAuthorDetails } from "@queries/get-queries";
+
+//hoc
+import withDataLoading from "@/components/hoc-data-loading";
 
 //components
-import PostGrid from "../../components/post-grid";
+import PostGrid from "@components/post-grid";
 
 const Author = () => {
   const { author } = useParams();

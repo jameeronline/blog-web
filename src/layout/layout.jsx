@@ -20,6 +20,7 @@ const RootLayout = () => {
       <main className="w-full xl:container mx-auto px-4">
         {isLoading && (
           <motion.div
+            className="h-full"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -31,6 +32,7 @@ const RootLayout = () => {
         {!error && !isLoading && (
           <AnimatePresence mode="wait">
             <motion.div
+              className="h-full"
               key="content"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

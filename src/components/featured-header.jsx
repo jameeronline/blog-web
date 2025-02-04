@@ -24,7 +24,10 @@ const FeaturedHeader = () => {
           >
             Join the Newsletter
           </Link>
-          <Link className="text-sm underline underline-offset-2 text-primary-500">
+          <Link
+            to="/blog"
+            className="text-sm underline underline-offset-2 text-primary-500"
+          >
             More Articles
           </Link>
         </div>

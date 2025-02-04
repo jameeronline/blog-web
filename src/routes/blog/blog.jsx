@@ -7,7 +7,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 const Blog = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   //pagination length
-  const [pageLength, setPagelength] = useState(3);
+  const [pageLength, setPagelength] = useState(6);
   const [currentPage, setCurrentPage] = useState(
     parseInt(searchParams.get("page"))
       ? parseInt(searchParams.get("page")) - 1

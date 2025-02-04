@@ -21,7 +21,7 @@ const menuItems = [
   },
   {
     name: "About",
-    slug: "about",
+    slug: "page/about",
   },
   {
     name: "Newsletter",
@@ -34,7 +34,16 @@ const Header = () => {
   const [isToggleOpen, setIsToggleOpen] = useState(false);
 
   //config
-  const { theme } = useConfig();
+  const { theme, updateConfig } = useConfig();
+
+  useEffect(() => {
+    const systemPrefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+    if (systemPrefersDark && theme !== "dark") {
+      updateConfig({ theme: "dark" });
+    }
+  }, []);
 
   useEffect(() => {
     if (theme === "dark") {
@@ -48,7 +57,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="sticky top-0 bg-white">
+      <header className="sticky top-0">
         {/* <div className="absolute inset-0 -z-10 -top-1/3 h-full w-full mesh-gradient-header opacity-90"></div> */}
         <div className="w-full xl:container mx-auto px-4">
           <div className="flex justify-between items-center py-4 relative">
@@ -76,7 +85,7 @@ const Header = () => {
                       to={item.slug}
                       onClick={() => setIsToggleOpen(false)}
                       className={({ isActive, isPending }) =>
-                        `flex p-2 hover:rounded-sm hover:text-gray-500 hover:bg-primary-100/50 lg:hover:bg-transparent transition-colors duration-200 ${
+                        `flex p-2 hover:rounded-sm hover:text-primary-600 hover:bg-primary-100/50 lg:hover:bg-transparent transition-colors duration-200 ${
                           isPending ? "pending" : ""
                         } ${
                           isActive

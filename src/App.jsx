@@ -16,7 +16,7 @@ import { ConfigProvider } from "./context/config-context";
 //components import
 import Home from "@routes/home";
 import Blog from "@routes/blog/blog";
-import About from "@routes/about";
+import Page from "@/routes/page";
 import Projects from "@routes/projects";
 import Newsletter from "@routes/newsletter";
 
@@ -99,8 +99,13 @@ const routes = createBrowserRouter([
         element: <Post />,
       },
       {
-        path: "about",
-        element: <About />,
+        path: "page",
+        children: [
+          {
+            path: ":page_slug",
+            element: <Page />,
+          },
+        ],
       },
       {
         path: "projects",
