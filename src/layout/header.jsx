@@ -21,7 +21,7 @@ const menuItems = [
   },
   {
     name: "About",
-    slug: "page/about",
+    slug: "static/about",
   },
   {
     name: "Newsletter",
@@ -57,7 +57,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="sticky top-0">
+      <header className="sticky top-0 z-10 backdrop-blur">
         {/* <div className="absolute inset-0 -z-10 -top-1/3 h-full w-full mesh-gradient-header opacity-90"></div> */}
         <div className="w-full xl:container mx-auto px-4">
           <div className="flex justify-between items-center py-4 relative">

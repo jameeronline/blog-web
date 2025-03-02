@@ -1,10 +1,11 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState } from "react";
 
 // Define default config values
 const defaultConfig = {
-  fontStyle: 'Inter', // default font
-  primaryColor: '#007AFF', // default primary color
-  theme: 'light', // default theme
+  fontStyle: "Inter", // default font
+  primaryColor: "#007AFF", // default primary color
+  theme: "light", // default theme
+  showAuthor: false, // show author name
 };
 
 // Create the context
@@ -27,9 +28,7 @@ export function ConfigProvider({ children }) {
   };
 
   return (
-    <ConfigContext.Provider value={value}>
-      {children}
-    </ConfigContext.Provider>
+    <ConfigContext.Provider value={value}>{children}</ConfigContext.Provider>
   );
 }
 
@@ -37,7 +36,7 @@ export function ConfigProvider({ children }) {
 export function useConfig() {
   const context = useContext(ConfigContext);
   if (context === undefined) {
-    throw new Error('useConfig must be used within a ConfigProvider');
+    throw new Error("useConfig must be used within a ConfigProvider");
   }
   return context;
 }

@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { QUERY_CONFIG, QUERY_URL } from "./config";
+import { QUERY_CONFIG, QUERY_URL, RQ_CONFIG } from "./config";
 
 export const GET_POST = `
     query($postSlug: String!){
@@ -89,5 +89,6 @@ export const usePost = (slug) => {
   return useQuery({
     queryKey: ["get-post", slug],
     queryFn: () => fetchPost(slug),
+    ...RQ_CONFIG,
   });
 };

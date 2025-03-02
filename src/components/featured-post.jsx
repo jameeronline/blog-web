@@ -13,7 +13,7 @@ const FeaturedPostCard = ({ post, size = "DEFAULT" }) => {
     slots: {
       base: "post-card",
       title: "font-bold text-typography text-2xl ",
-      image: "mb-8",
+      image: "mb-8 aspect-video ",
       tagWrapper: "flex gap-2",
     },
     variants: {
@@ -21,7 +21,7 @@ const FeaturedPostCard = ({ post, size = "DEFAULT" }) => {
         small: {
           base: "flex gap-6",
           title: "text-lg line-clamp-1",
-          image: "mb-8 flex-shrink-0 w-1/2",
+          image: "mb-8 flex-shrink-0 w-60 aspect-square h-auto",
           tagWrapper: "hidden",
         },
       },
@@ -55,7 +55,7 @@ const FeaturedPostCard = ({ post, size = "DEFAULT" }) => {
         <img
           src={postThumbnail.url}
           alt={`Thumbnail for ${title}`}
-          className="w-full aspect-video object-cover"
+          className="w-full object-cover"
         />
       </figure>
 
@@ -63,7 +63,10 @@ const FeaturedPostCard = ({ post, size = "DEFAULT" }) => {
         <header className="flex flex-col gap-3 mb-6">
           <p className="text-primary-600 text-sm flex items-center gap-2">
             {author && (
-              <Link to={`/blog/author/${author?.slug}`}>
+              <Link
+                to={`/blog/author/${author?.slug}`}
+                className="whitespace-nowrap"
+              >
                 <span>{author?.name}</span>
               </Link>
             )}

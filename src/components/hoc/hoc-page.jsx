@@ -1,4 +1,4 @@
-import withDataLoading from "@/components/hoc-data-loading";
+import withDataLoading from "@/components/hoc/hoc-data-loading";
 import PostGrid from "@components/post-grid";
 import { useRecentPosts } from "@/graph-queries/recent-posts";
 import { useFeaturedPosts } from "@/graph-queries/get-featured-posts";

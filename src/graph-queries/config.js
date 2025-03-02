@@ -40,3 +40,8 @@ sys {
 `;
 
 export const BLOG_TYPE_META = `{ contentfulMetadata: { tags: { id_contains_some: ["blog"] } } }`;
+
+export const RQ_CONFIG = {
+  staleTime: 3600000, // 1 hour in milliseconds
+  cacheTime: 4200000, // 1 hour 10 minutes in milliseconds
+};

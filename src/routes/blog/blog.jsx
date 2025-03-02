@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router";
 import PostGrid from "@components/post-grid";
 import { useFetchAllPosts } from "@queries/get-all-posts";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
+import { Spinner } from "@/components/spinner";
 
 const Blog = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -20,7 +21,7 @@ const Blog = () => {
   );
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Spinner />;
   }
 
   if (isError) {

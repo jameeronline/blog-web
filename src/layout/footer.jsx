@@ -32,7 +32,7 @@ const Footer = () => {
   return (
     <>
       <footer className="text-sm">
-        <div className="w-full xl:container px-4 mx-auto">
+        <div className="w-full xl:container mx-auto px-4">
           <nav className="py-8">
             <ul className="flex flex-wrap items-center justify-start gap-2 lg:gap-6">
               <li>
@@ -50,6 +50,14 @@ const Footer = () => {
                   </a>
                 </li>
               ))}
+              <li>
+                <Link to="/static/privacy-policy">Privacy Policy</Link>
+              </li>
+              <li>
+                <Link to="/static/terms-and-conditions">
+                  Terms and Conditions
+                </Link>
+              </li>
             </ul>
           </nav>
         </div>

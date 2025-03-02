@@ -1,7 +1,7 @@
 import Header from "./header";
 import Footer from "./footer";
 
-import Error from "../routes/error";
+import Error from "../components/error";
 
 import { useNavigation, useRouteError } from "react-router";
 import { Outlet } from "react-router";
@@ -17,7 +17,7 @@ const RootLayout = () => {
   return (
     <>
       <Header />
-      <main className="w-full xl:container mx-auto px-4">
+      <main className="w-full 2xl:container mx-auto px-4">
         {isLoading && (
           <motion.div
             className="h-full"

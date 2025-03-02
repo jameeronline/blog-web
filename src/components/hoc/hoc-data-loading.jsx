@@ -1,5 +1,7 @@
-import { Spinner } from "./spinner";
-import { NoData } from "./no-data";
+import { Spinner } from "../spinner";
+
+//Feedback component
+import NoData from "../no-data";
 
 const withDataLoading = (useFetchPosts, args) => (WrapperComponent) => {
   return (props) => {
@@ -13,8 +15,8 @@ const withDataLoading = (useFetchPosts, args) => (WrapperComponent) => {
     // Error
     if (isError) return <div>Error fetching data {JSON.stringify(error)}</div>;
 
-    // Empty
-    if (!data || data.length === 0) return <NoData>No data available</NoData>;
+    // if Empty
+    if (!data || data.length === 0) return <NoData />;
 
     return <WrapperComponent posts={data} {...props} />;
   };

@@ -13,7 +13,7 @@ import FeaturedPostCard from "@components/featured-post";
 import UIButton from "@components/ui/ui-button";
 import PinnedPost from "@components/pinned-post";
 import { Spinner } from "@components/spinner";
-import EnhancedGreeting from "@components/hoc-button";
+import EnhancedGreeting from "@/components/hoc/hoc-button";
 
 const Home = () => {
   const location = useLocation();
@@ -51,17 +51,20 @@ const Home = () => {
 
   return (
     <>
+      {/* FEATURED HEADER */}
       <FeaturedHeader />
+
+      {/* FEATURED POSTS */}
       <section>
         <header>
           <h1 className="text-2xl font-bold mt-12 mb-6">Featured Posts</h1>
         </header>
         <div className="grid grid-cols-4 gap-8 md:grid-cols-8 lg:grid-cols-12">
-          <div className="col-span-4 md:col-span-8 lg:col-span-6">
+          <div className="col-span-4 md:col-span-8 lg:col-span-8">
             <FeaturedPostCard post={featuredPosts[0]} />
           </div>
 
-          <div className="col-span-4 md:col-span-8 lg:col-span-6">
+          <div className="col-span-4 md:col-span-8 lg:col-span-4">
             <FeaturedPostCard post={featuredPosts[1]} size="small" />
             <FeaturedPostCard post={featuredPosts[2]} size="small" />
             <FeaturedPostCard post={featuredPosts[0]} size="small" />
@@ -82,12 +85,6 @@ const Home = () => {
         <div className="grid grid-cols-4 gap-8 gap-y-12 md:grid-cols-8 lg:grid-cols-12">
           <PostGrid posts={recentPosts} />
         </div>
-
-        {/* <footer className="flex justify-center mt-10">
-          <Link to="/blog">
-            <UIButton>Read More Posts</UIButton>
-          </Link>
-        </footer> */}
       </section>
     </>
   );

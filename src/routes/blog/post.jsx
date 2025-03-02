@@ -26,6 +26,8 @@ import UITag from "../../components/ui/ui-tag";
 import PostAside from "./post-aside";
 import { richTextEditorRender } from "../../utilities/post-richtext-render";
 import RelatedPosts from "../../components/related-post";
+import NoData from "@/components/no-data";
+import { Spinner } from "@/components/spinner";
 
 const Post = () => {
   const { state } = useLocation();
@@ -35,7 +37,7 @@ const Post = () => {
 
   //isLoading
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Spinner />;
   }
 
   //isError
@@ -45,11 +47,7 @@ const Post = () => {
 
   //isEmpty
   if (data.length === 0) {
-    return (
-      <div>
-        There is no post available at the moment. Please check back later.
-      </div>
-    );
+    return <NoData />;
   }
 
   //destructure data
@@ -69,14 +67,6 @@ const Post = () => {
 
   return (
     <section className="grid grid-cols-4 gap-8 md:grid-cols-8 lg:grid-cols-12">
-      <aside className="col-span-4 hidden xl:block">
-        <RelatedPosts
-          tags={tagsCollection.items.map((tag) => tag.slug)}
-          categories={categoryCollection.items.map((category) => category.slug)}
-          currentPostId={sys.id}
-        />
-      </aside>
-
       <article className="col-span-4 md:col-span-8">
         {/* SEO */}
         <SEO
@@ -87,10 +77,10 @@ const Post = () => {
         />
 
         {/* MAIN     */}
-        <div className="prose prose-slate dark:prose-invert mb-10">
+        <div className="prose prose-gray xl:prose-lg dark:prose-invert mb-10">
           {/* HEADER */}
           <header className="mb-8">
-            <p className="text-primary-600 text-sm md:font-semibold md:text-base">
+            <p className="text-primary-600 text-sm md:text-base">
               <span>{formatDateString(sys.publishedAt)}</span>
             </p>
             <h1>{title}</h1>
@@ -166,6 +156,14 @@ const Post = () => {
         {/* Newsletter form */}
         <InlineNewsLetter />
       </article>
+
+      <aside className="col-span-4 sticky top-24">
+        <RelatedPosts
+          tags={tagsCollection.items.map((tag) => tag.slug)}
+          categories={categoryCollection.items.map((category) => category.slug)}
+          currentPostId={sys.id}
+        />
+      </aside>
 
       {/* <aside className="col-span-4 hidden lg:block">
         <PostAside details={details} />

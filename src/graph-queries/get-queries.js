@@ -1,6 +1,6 @@
 //get author details
 import { useQuery } from "@tanstack/react-query";
-import { QUERY_CONFIG, QUERY_URL } from "./config";
+import { QUERY_CONFIG, QUERY_URL, RQ_CONFIG } from "./config";
 
 const GET_AUTHOR_DETAILS = `
     query($slug: String){
@@ -45,5 +45,6 @@ export const useAuthorDetails = (slug) => {
   return useQuery({
     queryKey: ["get-author-details", slug],
     queryFn: () => fetchAuthor(slug),
+    ...RQ_CONFIG,
   });
 };

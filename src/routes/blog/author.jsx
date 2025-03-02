@@ -3,7 +3,7 @@ import { useAuthor } from "@queries/get-author-posts";
 import { useAuthorDetails } from "@queries/get-queries";
 
 //hoc
-import withDataLoading from "@/components/hoc-data-loading";
+import withDataLoading from "@/components/hoc/hoc-data-loading";
 
 //components
 import PostGrid from "@components/post-grid";
@@ -47,7 +47,7 @@ const Author = () => {
           )}
         </figure>
         <div>
-          <p className="text-xs text-typography-tertiary uppercase">
+          <p className="text-xs text-typography-tertiary uppercase mb-2">
             <span>Blog Posts By</span>
           </p>
           <h1 className="text-2xl font-bold"> {name}</h1>

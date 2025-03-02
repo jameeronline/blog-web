@@ -65,3 +65,12 @@ export function convertArrayToString(arr) {
     return arr.map((item) => `#${item.title}`).join(", ");
   }
 }
+
+export function findCategoryTitle(post, category) {
+  return post.categoryCollection.items.find((item) => item.slug === category)
+    ?.title;
+}
+
+export function findTagTitle(post, tag) {
+  return post.tagsCollection.items.find((item) => item.slug === tag)?.title;
+}
