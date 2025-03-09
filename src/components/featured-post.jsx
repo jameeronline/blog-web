@@ -8,12 +8,17 @@ import {
 import UITag from "./ui/ui-tag";
 import { tv } from "tailwind-variants";
 
+//context
+import { useConfig } from "@/context/config-context";
+
 const FeaturedPostCard = ({ post, size = "DEFAULT" }) => {
+  const { showAuthor } = useConfig();
+
   const featuredPostClasses = tv({
     slots: {
       base: "post-card",
       title: "font-bold text-typography text-2xl ",
-      image: "mb-8 aspect-video ",
+      image: "mb-8 aspect-video",
       tagWrapper: "flex gap-2",
     },
     variants: {
@@ -21,7 +26,7 @@ const FeaturedPostCard = ({ post, size = "DEFAULT" }) => {
         small: {
           base: "flex gap-6",
           title: "text-lg line-clamp-1",
-          image: "mb-8 flex-shrink-0 w-60 aspect-square h-auto",
+          image: "mb-8 flex-shrink-0 w-60 aspect-video overflow-hidden",
           tagWrapper: "hidden",
         },
       },
@@ -62,26 +67,30 @@ const FeaturedPostCard = ({ post, size = "DEFAULT" }) => {
       <div className="">
         <header className="flex flex-col gap-3 mb-6">
           <p className="text-primary-600 text-sm flex items-center gap-2">
-            {author && (
-              <Link
-                to={`/blog/author/${author?.slug}`}
-                className="whitespace-nowrap"
-              >
-                <span>{author?.name}</span>
-              </Link>
+            {showAuthor && (
+              <>
+                {author && (
+                  <Link
+                    to={`/blog/author/${author?.slug}`}
+                    className="whitespace-nowrap"
+                  >
+                    <span>{author?.name}</span>
+                  </Link>
+                )}
+                <span className="leading-none" aria-hidden="true">
+                  |
+                </span>
+              </>
             )}
-            <span className="leading-none" aria-hidden="true">
-              |
-            </span>
             <time dateTime={sys.publishedAt}>
               {formatDateString(sys.publishedAt)}
             </time>
           </p>
-          <h2 className={titleClass()} title={title}>
-            <Link to={`/post/${slug}`} state={{ id: sys.id }}>
+          <h4 className={titleClass()} title={title}>
+            <Link to={`/post/${slug}`}>
               <span>{title}</span>
             </Link>
-          </h2>
+          </h4>
           <p className="line-clamp-2 text-typography-secondary">{summary}</p>
         </header>
 

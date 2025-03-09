@@ -17,7 +17,7 @@ const RootLayout = () => {
   return (
     <>
       <Header />
-      <main className="w-full 2xl:container mx-auto px-4">
+      <main className="w-full xl:container mx-auto px-4 my-8">
         {isLoading && (
           <motion.div
             className="h-full"

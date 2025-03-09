@@ -5,15 +5,17 @@ import UITag from "../ui/ui-tag";
 const PostCardTags = ({ categories, tags }) => {
   return (
     <div className="flex flex-wrap gap-2 mb-4">
-      {categories.map(({ title, slug }) => (
+      {categories.map(({ title, slug }, index) => (
         <Link key={slug} to={`/blog/category/${slug}`}>
-          <UITag type="secondary">{title}</UITag>
+          <UITag type="secondary" index={index}>
+            {title}
+          </UITag>
         </Link>
       ))}
 
-      {tags.map(({ title, slug }) => (
+      {tags.map(({ title, slug }, index) => (
         <Link key={slug} to={`/blog/tag/${slug}`}>
-          <UITag>{`#${title}`}</UITag>
+          <UITag type="tertiary" index={index}>{`${title}`}</UITag>
         </Link>
       ))}
     </div>

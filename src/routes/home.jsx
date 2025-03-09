@@ -57,23 +57,25 @@ const Home = () => {
       {/* FEATURED POSTS */}
       <section>
         <header>
-          <h1 className="text-2xl font-bold mt-12 mb-6">Featured Posts</h1>
+          <h2 className="text-2xl font-bold mt-12 mb-6">Featured Posts</h2>
         </header>
         <div className="grid grid-cols-4 gap-8 md:grid-cols-8 lg:grid-cols-12">
-          <div className="col-span-4 md:col-span-8 lg:col-span-8">
+          <div className="col-span-4 md:col-span-8 lg:col-span-6">
             <FeaturedPostCard post={featuredPosts[0]} />
           </div>
 
-          <div className="col-span-4 md:col-span-8 lg:col-span-4">
-            <FeaturedPostCard post={featuredPosts[1]} size="small" />
-            <FeaturedPostCard post={featuredPosts[2]} size="small" />
-            <FeaturedPostCard post={featuredPosts[0]} size="small" />
+          <div className="col-span-4 md:col-span-8 lg:col-span-6">
+            <div className="flex flex-col gap-6">
+              <FeaturedPostCard post={featuredPosts[1]} size="small" />
+              <FeaturedPostCard post={featuredPosts[2]} size="small" />
+              <FeaturedPostCard post={featuredPosts[0]} size="small" />
+            </div>
           </div>
         </div>
       </section>
 
       {/* PINNED POSTS */}
-      <section className="p-6 my-8 md:my-10 bg-primary-50">
+      <section className="my-8 md:my-10 ">
         <PinnedPost post={featuredPosts[0]} />
       </section>
 

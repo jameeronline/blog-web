@@ -67,7 +67,7 @@ const Post = () => {
 
   return (
     <section className="grid grid-cols-4 gap-8 md:grid-cols-8 lg:grid-cols-12">
-      <article className="col-span-4 md:col-span-8">
+      <article className="col-span-4 md:col-span-8 lg:col-start-3 lg:col-span-8">
         {/* SEO */}
         <SEO
           title={title}
@@ -80,11 +80,11 @@ const Post = () => {
         <div className="prose prose-gray xl:prose-lg dark:prose-invert mb-10">
           {/* HEADER */}
           <header className="mb-8">
-            <p className="text-primary-600 text-sm md:text-base">
+            <p className="text-primary-600 text-sm md:text-base font-mono">
               <span>{formatDateString(sys.publishedAt)}</span>
             </p>
             <h1>{title}</h1>
-            <div className="inline-flex items-center gap-4">
+            {/* <div className="inline-flex items-center gap-4">
               {author && author?.avatar?.url && (
                 <img
                   src={author?.avatar?.url}
@@ -100,7 +100,6 @@ const Post = () => {
                   {author?.name}
                 </Link>
 
-                {/* Social Share Links */}
                 <SocialShare
                   url={window.location.href}
                   title={title}
@@ -108,7 +107,7 @@ const Post = () => {
                   hashtag={convertArrayToString(tagsCollection)}
                 />
               </div>
-            </div>
+            </div> */}
           </header>
 
           {postThumbnail && (
@@ -157,13 +156,13 @@ const Post = () => {
         <InlineNewsLetter />
       </article>
 
-      <aside className="col-span-4 sticky top-24">
+      {/* <aside className="col-span-4 sticky top-24">
         <RelatedPosts
           tags={tagsCollection.items.map((tag) => tag.slug)}
           categories={categoryCollection.items.map((category) => category.slug)}
           currentPostId={sys.id}
         />
-      </aside>
+      </aside> */}
 
       {/* <aside className="col-span-4 hidden lg:block">
         <PostAside details={details} />

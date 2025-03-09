@@ -34,7 +34,7 @@ const Footer = () => {
       <footer className="text-sm">
         <div className="w-full xl:container mx-auto px-4">
           <nav className="py-8">
-            <ul className="flex flex-wrap items-center justify-start gap-2 lg:gap-6">
+            <ul className="flex flex-wrap items-center justify-center gap-2 lg:gap-6">
               <li>
                 <span>
                   &copy; 2024 <span className="font-semibold">The Blog</span>

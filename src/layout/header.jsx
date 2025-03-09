@@ -57,7 +57,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-10 backdrop-blur">
+      <header className="sticky top-0 z-10 bg-white dark:bg-background-body dark:bg-opacity-90 shadow-sm dark:shadow-none">
         {/* <div className="absolute inset-0 -z-10 -top-1/3 h-full w-full mesh-gradient-header opacity-90"></div> */}
         <div className="w-full xl:container mx-auto px-4">
           <div className="flex justify-between items-center py-4 relative">
@@ -66,7 +66,9 @@ const Header = () => {
               to="/"
               className="font-bold text-2xl inline-flex flex-nowrap items-center gap-2"
             >
-              <span className="whitespace-nowrap">The Blog.</span>
+              <span className="whitespace-nowrap">
+                <span className="text-primary-600">The</span> Blog.
+              </span>
             </Link>
 
             {/* Menu */}
